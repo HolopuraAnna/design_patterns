@@ -1,0 +1,29 @@
+import java.util.ArrayList;
+
+public class StaffList implements Employee {
+
+    private final ArrayList<Employee> employees = new ArrayList<>();
+
+    public void addEmployee(Employee employee) {
+        employees.add(employee);
+    }
+
+    @Override
+    public int getSalary() {
+        int sum = 0;
+
+        for (Employee employee : employees) {
+            sum += employee.getSalary();
+        }
+
+        return sum;
+    }
+
+    @Override
+    public void accept(EmployeeVisitor visitor) {
+
+        for (Employee employee : employees) {
+            employee.accept(visitor);
+        }
+    }
+}
